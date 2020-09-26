@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
    This program edits a random access file of product data.   
 */
-public class Main
+public class ProductDataEditor
 {  
    public static void main(String[] args) throws IOException
    {  
