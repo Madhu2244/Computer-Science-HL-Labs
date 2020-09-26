@@ -1,0 +1,39 @@
+/**
+ * @(#)Truck.java
+ *
+ *
+ * @author 
+ * @version 1.00 2015/9/24
+ */
+
+
+public class Truck extends Vehicle
+{
+	private static final String TRUCK_TYPE = "truck";
+   
+    private double tow;
+    public Truck()
+    {
+    	super(TRUCK_TYPE,"F150",0);
+    	tow = 1500;
+    }
+    public Truck(String what, String m, double s, double t)
+    {
+    	super(what,m, s);
+    	tow = t;
+    }
+    public void makeGo(double howFar)
+    {
+    	super.makeGo(howFar*2);
+    }
+   
+    public void updateTow(double t)
+   {
+   	tow = t;
+   }
+   public String toString()
+    {
+    	return super.toString() + " Truck can tow " + tow;
+    }
+    
+}
