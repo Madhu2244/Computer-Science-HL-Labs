@@ -1,0 +1,73 @@
+class Main {
+  public static void main(String[] args) 
+  {
+    //create objects
+    
+     Vehicle v = new Vehicle();
+     Truck t = new Truck();
+     Camper c = new Camper();
+     
+    // polymorphic objects
+     Vehicle vt = new Truck();
+     //todo .. create vehicle reference holding Camper data called vc
+     Vehicle vc = new Camper();
+     
+     
+     
+    
+    // print all
+    System.out.println("vehicle is: " + v);
+    System.out.println("truck is: " + t);
+    System.out.println("Camper : " + c);
+    System.out.println("Polymorphic : " + vt);
+    //todo -- add print for new polymorphic Camper vc
+    System.out.println("Polymorphic 2: " + vc);
+    
+    System.out.println();
+    // make each vehicle go.reprint.which makeGo method was run?
+    v.makeGo(50);
+    t.makeGo(50);
+    c.makeGo(50);
+    vt.makeGo(50);
+    //to do make vc go - pass it 50
+    vc.makeGo(50);
+    
+    
+    System.out.println("after all moved forward");
+    System.out.println("vehicle is: " + v);
+    System.out.println("truck is: " + t);
+    System.out.println("Camper : " + c);
+    System.out.println("Polymorphic : " + vt);
+    System.out.println("Polymorphic 2: " + vc);
+    
+    
+    //practice calling method of data when the method 
+    // isn't in the superclass
+    t.updateTow(500);
+    ((Truck)vt).updateTow(500);
+    
+    //to do - make both c and the new vc objects perform
+    // the behavior you added in step 3. 
+    c.addCook(6);
+    ((Camper)vc).changeCook(5);
+    
+    System.out.println("\nafter data updated:");
+    System.out.println("vehicle is: " + v);
+    System.out.println("truck is: " + t);
+    System.out.println("Camper : " + c);
+    System.out.println("Polymorphic : " + vt);
+    System.out.println("Polymorphic 2: " + vc);
+    
+    //Experimental
+    Truck typeA = new Truck("Cooker Truck", "Cooker", 23, 434);
+    Truck typeB = new Truck("Cooker Truck", "Cooker", 23, 434);
+    typeB.updateTow(20);
+        typeA.makeGo(40);
+    typeB.makeGo(60);
+    System.out.println("Truck A:" + typeA);
+    System.out.println("Truck B:" + typeB);
+    System.out.println("\nTest After:");
+    System.out.println("Truck A:"+ typeA);
+    System.out.println("Truck A:" + typeB);
+  }
+}
