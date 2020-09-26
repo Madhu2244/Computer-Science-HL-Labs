@@ -1,0 +1,48 @@
+public class Camper extends Vehicle
+{
+  private int numCampers;
+  private int numCooks;
+  
+  public Camper()
+  {
+    numCampers = 4;
+    numCooks = 0;
+  }
+  
+  public Camper(String type, String mode, double speed, int numCampers, int numCooks)
+  {
+    super(type,mode,speed);
+    this.numCampers = numCampers;
+    this.numCooks = numCooks;
+  }
+  
+  public Camper(String type, String mode, double speed, int numCampers)
+  {
+    super(type,mode,speed);
+    this.numCampers = numCampers;
+    this.numCooks = 0;
+  }
+  //to do create a behavior of your choosing such as start campfire or sleep or ??
+  
+  //complete the following makeGo to function as described.
+  public void makeGo(double howFar)
+  {
+    super.makeGo(howFar*0.75);
+  }
+  
+  public void changeCook(int numCooks)
+  {
+    this.numCooks = numCooks;
+  }
+  
+  public void addCook(int numCooks)
+  {
+    this.numCooks += numCooks;
+  }
+  
+  public String toString()
+  {
+    return super.toString() + " There are " + numCampers + " Campers. There are " + numCooks + " cooks.";
+  }
+  
+}
