@@ -1,0 +1,80 @@
+/*
+ * Name: Madhu Sharma
+ * Date Completed: 9/11/2020
+ * Period:5
+ */
+
+// Write your Pawn class below...
+public class Pawn implements ChessPiece
+{
+  private String name;
+  private String color;
+  private int row;
+  private int col;
+  public static final int CHESSBOARDSIZE = 8;
+  public static final int CHESSBOARDMIN = 0;
+  
+  public Pawn()
+  {
+    this.name = "Invalid";
+    this.color = "Invalid";
+    this.row = -1;
+    this.col = -1;
+  }
+  
+  public Pawn(String color, int row, int col)
+  {
+    this.name = "Pawn";
+    this.color = color;
+    this.row = row;
+    this.col = col;
+  }
+  
+  public String getName()
+  {
+    return this.name;
+  }
+  
+  public String getColor()
+  {
+    return this.color;
+  }
+  
+  public int getRow()
+  {
+    return this.row;
+  }
+  
+  public int getCol()
+  {
+    return this.col;
+  }
+  
+  public boolean isValidNextMove(int nextRow, int nextCol)
+  {
+    boolean standStill = false;
+    if (nextRow == row && nextCol == col)
+    {
+      standStill = true;
+    }
+    if (!standStill)
+    {
+      boolean rowInBounds = nextRow <= CHESSBOARDSIZE && nextRow >= CHESSBOARDMIN;
+      boolean colInBounds = nextCol <= CHESSBOARDSIZE && nextCol >= CHESSBOARDMIN;
+      
+      if ((row - 1 == nextRow) && rowInBounds)
+      {
+        if ((col + 1 == nextCol || col - 1 == nextCol || col == nextCol) && colInBounds)
+        {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return this.color + " " + this.name + " at (" + this.row + ", " + this.col + ")";
+  }
+}
