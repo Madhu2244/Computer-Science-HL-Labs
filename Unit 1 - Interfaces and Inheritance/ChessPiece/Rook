@@ -1,0 +1,80 @@
+/*
+ * Name: Madhu
+ * Date Completed:9/14
+ * Period:5
+ */
+
+// Write your Pawn class below...
+public class Rook implements ChessPiece
+{
+  private String name;
+  private String color;
+  private int row;
+  private int col;
+  public static final int CHESSBOARDSIZE = 8;
+  public static final int CHESSBOARDMIN = 0;
+  
+  public Rook(String c, int row, int col)
+  {
+    name = "Rook";
+    this.color = c;
+    this.row = row;
+    this.col = col;
+  }
+
+  public String getName()
+  {
+    return this.name;
+  }
+
+  public String getColor()
+  {
+    return this.color;
+  }
+
+  public int getRow()
+  {
+    return this.row;
+  }
+
+  public int getCol()
+  {
+    return this.col;
+  }
+
+  public String toString()
+  {
+    return this.color + " " + this.name + " at (" + this.row + ", " + this.col + ")";
+  }
+
+  public boolean isValidNextMove(int nextRow, int nextCol)
+  {
+    if(nextRow != row && nextCol == col)
+    {
+      if(nextRow >= CHESSBOARDMIN && nextRow < CHESSBOARDSIZE)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+    else if(nextCol != col && nextRow == row)
+    {
+      if(nextCol >= CHESSBOARDMIN && nextCol < CHESSBOARDSIZE)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+    else
+    {
+      return false;
+    }
+  }
+
+}
