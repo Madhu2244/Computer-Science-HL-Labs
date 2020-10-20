@@ -1,3 +1,4 @@
+//author Madhu Sharma
 public class Product
 {  
    private String name;
