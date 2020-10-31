@@ -91,24 +91,22 @@ public class BankList
 	 */
 	public int search(String number)
 	{
-	  int l = 0;
-	  int r = accounts.size() - 1;
-	  while (l <= r)
+	  int left = 0;
+	  int right = accounts.size() - 1;
+	  while (left <= right)
 	  {
-	    int m = l + (r - 1) / 2;
-	    
-	    if (accounts.get(m).equals(number))
+	    int middle = (left + right) / 2;
+	    if (Integer.parseInt(number) < Integer.parseInt(accounts.get(middle).getNumber()))
 	    {
-	      return m;
+	      right = middle - 1;
 	    }
-	    
-	    if (accounts.get(m).compareTo(number) < 0)
+	    else if (Integer.parseInt(number) > Integer.parseInt(accounts.get(middle).getNumber()))
 	    {
-	      l = m + 1;
+	      left = middle + 1;
 	    }
 	    else
 	    {
-	      r = m -1
+	      return middle;
 	    }
 	  }
 	  return -1;
