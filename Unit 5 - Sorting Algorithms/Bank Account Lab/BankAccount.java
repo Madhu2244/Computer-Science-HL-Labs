@@ -96,8 +96,8 @@ public class BankAccount implements Comparable
     */
    public int compareTo(Object o)
    {
-   		// fix
-   		return 0;
+   		BankAccount bank = (BankAccount) o;
+   		return Integer.parseInt(this.getNumber()) - Integer.parseInt(bank.getNumber());
    }
    
    /**
@@ -107,8 +107,8 @@ public class BankAccount implements Comparable
     */
    public boolean equals(Object o)
    {
-   		// fix
-   		return true;
+      BankAccount bank = (BankAccount) o;
+   	  return ((this.getBalance() == bank.getBalance()) && (this.getName().equals(bank.getName()))&& (this.getNumber().equals(bank.getNumber())));
    }
    
    /**
