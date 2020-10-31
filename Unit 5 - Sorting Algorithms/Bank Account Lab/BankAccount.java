@@ -108,7 +108,7 @@ public class BankAccount implements Comparable
    public boolean equals(Object o)
    {
       BankAccount bank = (BankAccount) o;
-   	  return ((this.getBalance() == bank.getBalance()) && (this.getName().equals(bank.getName()))&& (this.getNumber().equals(bank.getNumber())));
+   	  return this.equals(bank);
    }
    
    /**
