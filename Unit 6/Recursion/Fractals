@@ -1,0 +1,138 @@
+/*
+Name: Madhu Sharma
+Period: 5 
+Date Turned In: 11/11
+*/
+
+//imports
+import java.awt.*;
+import javax.swing.*;
+
+/**
+ * Draws rectangular fractals using Recursion and MUTUAL recursion.
+ * (See the Lab Help Page for tips.)
+ */
+public class Main extends Canvas
+{
+	public static int pause = 2;  // use to delay the drawing of the fractals (REQUIRED)
+	// if your fractals take more than 30 seconds to draw the full screen window, you're drawing too much!
+
+  public static void main(String[] args) {
+    Main m = new Main();
+    JFrame f = new JFrame();
+    f.add(m);
+    f.setSize(800, 600);
+    f.setVisible(true);
+  }
+
+	/**
+	 * Calls a method to draw the original center rectangle 
+   * in the middle of the graphics window.
+   *
+   * @param g the graphics object that is being drawing
+	 */
+	public void paint(Graphics g)
+	{	
+		drawRectangle(g,getWidth(),getHeight());
+	}
+	
+	/**
+	 * Draws the original rectangle, then calls the methods that draw the
+	 * four rectangles at the corners.
+	 * NOT RECURSIVE
+   * @param g the graphics object that is being drawing
+   * @param totalWidth the width of the window
+   * @param totalHeight the height of the window
+	 */
+	public void drawRectangle(Graphics g, int totalWidth, int totalHeight)
+	{
+    int w = totalWidth /3;
+    int h = totalHeight/3;
+    int y = (getHeight()/2) - (h/2);
+    int x = (getWidth()/2) - (w/2);
+    g.setColor(new Color((int)(Math.floor(Math.random() * Math.floor(256))), (int)(Math.floor(Math.random() * Math.floor(256))), (int)(Math.floor(Math.random() * Math.floor(256)))));
+    g.fillRect(x, y, w, h);
+    Color c = new Color((int)(Math.floor(Math.random() * Math.floor(256))), (int)(Math.floor(Math.random() * Math.floor(256))), (int)(Math.floor(Math.random() * Math.floor(256))));
+    drawTopRight(g, x+w, y-(h/2), w/2, h/2, c);
+    drawTopLeft(g, x-(w/2), y-(h/2), w/2, h/2, c);
+    drawBottomRight(g, x+w, y+h, w/2, h/2, c);
+    drawBottomLeft(g, x-(w/2), y+h, w/2, h/2, c);
+	}
+
+  public void drawTopRight(Graphics g, int x, int y, int w, int h, Color c)
+  {
+    try
+    {
+      Thread.sleep(pause);
+    }
+    catch(InterruptedException e){}
+    g.setColor(c);
+    g.fillRect(x, y, w, h);
+    if((w/2) >= 1 && (h/2) >= 1)
+    {
+      c = new Color((int)(Math.floor(Math.random() * Math.floor(256))), (int)(Math.floor(Math.random() * Math.floor(256))), (int)(Math.floor(Math.random() * Math.floor(256))));
+      drawTopRight(g, x+w, y-(h/2), w/2, h/2, c);
+      drawTopLeft(g, x-(w/2), y-(h/2), w/2, h/2, c);
+      drawBottomRight(g, x+w, y+h, w/2, h/2, c);
+    }
+  }
+
+  public void drawTopLeft(Graphics g, int x, int y, int w, int h, Color c)
+  {
+    try
+    {
+      Thread.sleep(pause);
+    }
+    catch(InterruptedException e){}
+    g.setColor(c);
+    g.fillRect(x, y, w, h);
+    if((w/2) >= 1 && (h/2) >= 1)
+    {
+      c = new Color((int)(Math.floor(Math.random() * Math.floor(256))), (int)(Math.floor(Math.random() * Math.floor(256))), (int)(Math.floor(Math.random() * Math.floor(256))));
+      drawTopRight(g, x+w, y-(h/2), w/2, h/2, c);
+      drawTopLeft(g, x-(w/2), y-(h/2), w/2, h/2, c);
+      drawBottomLeft(g, x-(w/2), y+h, w/2, h/2, c);
+    }
+  }
+
+  public void drawBottomRight(Graphics g, int x, int y, int w, int h, Color c)
+  {
+    try
+    {
+      Thread.sleep(pause);
+    }
+    catch(InterruptedException e){}
+    g.setColor(c);
+    g.fillRect(x, y, w, h);
+    if((w/2) >= 1 && (h/2) >= 1)
+    {
+      c = new Color((int)(Math.floor(Math.random() * Math.floor(256))), (int)(Math.floor(Math.random() * Math.floor(256))), (int)(Math.floor(Math.random() * Math.floor(256))));
+      drawTopRight(g, x+w, y-(h/2), w/2, h/2, c);
+      drawBottomRight(g, x+w, y+h, w/2, h/2, c);
+      drawBottomLeft(g, x-(w/2), y+h, w/2, h/2, c);
+    }
+  }
+
+  public void drawBottomLeft(Graphics g, int x, int y, int w, int h, Color c)
+  {
+    try
+    {
+      Thread.sleep(pause);
+    }
+    catch(InterruptedException e){}
+    g.setColor(c);
+    g.fillRect(x, y, w, h);
+    if((w/2) >= 1 && (h/2) >= 1)
+    {
+      c = new Color((int)(Math.floor(Math.random() * Math.floor(256))), (int)(Math.floor(Math.random() * Math.floor(256))), (int)(Math.floor(Math.random() * Math.floor(256))));
+      drawTopLeft(g, x-(w/2), y-(h/2), w/2, h/2, c);
+      drawBottomRight(g, x+w, y+h, w/2, h/2, c);
+      drawBottomLeft(g, x-(w/2), y+h, w/2, h/2, c);
+    }
+  }
+}
+
+  
+
+
+
